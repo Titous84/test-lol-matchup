@@ -46,7 +46,7 @@ const MatchupForm: React.FC<Props> = ({ matchup, onSaved }) => {
     }
   }, [matchup]);
 
-  const mettreAJour = (cle: keyof Matchup, valeur: string | number | boolean) => {
+  const mettreAJour = <K extends keyof Matchup>(cle: K, valeur: Matchup[K]) => {
     setFormulaire((courant) => ({ ...courant, [cle]: valeur }));
   };
 

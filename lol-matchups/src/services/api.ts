@@ -20,7 +20,7 @@ type AuthResponse = {
 
 const requete = async <T>(endpoint: string, options: RequestOptions = {}) => {
   const { token, headers: customHeaders, ...fetchOptions } = options;
-  const headers: HeadersInit = {
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     ...(customHeaders ?? {}),
   };

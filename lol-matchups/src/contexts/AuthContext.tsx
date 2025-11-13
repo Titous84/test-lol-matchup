@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { login, register, fetchProfile } from '../services/api';
 
 type Utilisateur = {
@@ -37,16 +43,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   );
   const [utilisateur, setUtilisateur] = useState<Utilisateur | undefined>();
 
-  useEffect(() => {
-    if (token) {
-      localStorage.setItem(STORAGE_KEY, token);
-      void chargerProfil();
-    } else {
-      localStorage.removeItem(STORAGE_KEY);
-      setUtilisateur(undefined);
-    }
-  }, [token]);
-
   const seConnecter = async (courriel: string, motDePasse: string) => {
     const reponse = await login({ courriel, motDePasse });
     setToken(reponse.token);
@@ -69,7 +65,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setToken(undefined);
   };
 
-  const chargerProfil = async () => {
+  const chargerProfil = useCallback(async () => {
     if (!token) return;
     try {
       const profil = await fetchProfile(token);
@@ -78,7 +74,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error('Erreur lors du chargement du profil', error);
       setToken(undefined);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem(STORAGE_KEY, token);
+      void chargerProfil();
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+      setUtilisateur(undefined);
+    }
+  }, [token, chargerProfil]);
 
   return (
     <AuthContext.Provider
