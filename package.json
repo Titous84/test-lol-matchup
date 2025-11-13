@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/serveur.ts",
-    "test": "jasmine"
+    "test": "node --require ts-node/register node_modules/jasmine/bin/jasmine.js --config=spec/support/jasmine.json"
   },
   "keywords": [],
   "author": "",

@@ -1,91 +1,102 @@
-// Routes pour la collection "matchups"
+import express from 'express';
+import type { Model } from 'mongoose';
+import { Matchup, type MatchupDocument } from '../models/Matchup';
+import { envoyerErreurServeur, envoyerErreurValidation } from '../utils/reponses';
 
-const express = require('express');
-const { Matchup } = require('../modèles/Matchup');
+export const createMatchupsRouter = (
+  MatchupModel: Model<MatchupDocument> = Matchup,
+) => {
+  const router = express.Router();
 
-// Typage Express (astuce CommonJS)
-type Request = import('express').Request;
-type Response = import('express').Response;
+  router.get('/', async (req, res) => {
+    try {
+      const filtre: Record<string, unknown> = {};
+      if (req.query.championPrincipal)
+        filtre.championPrincipal = req.query.championPrincipal;
+      if (req.query.championAdverse)
+        filtre.championAdverse = req.query.championAdverse;
+      if (req.query.voie) filtre.voie = req.query.voie;
+      if (req.query.difficulte) filtre.difficulte = req.query.difficulte;
+      if (req.query.favorable)
+        filtre.favorable = req.query.favorable === 'true';
 
-const router = express.Router();
+      const matchups = await MatchupModel.find(filtre);
+      res.json(matchups);
+    } catch (err) {
+      envoyerErreurServeur(
+        res,
+        err,
+        '❌ Impossible de récupérer les matchups.',
+      );
+    }
+  });
 
-// === GET /matchups → liste tous ou filtrés
-router.get('/', async (req: Request, res: Response) => {
-  try {
-    const filtre: any = {};
-    if (req.query.championPrincipal)
-      filtre.championPrincipal = req.query.championPrincipal;
-    if (req.query.championAdverse)
-      filtre.championAdverse = req.query.championAdverse;
-    if (req.query.favorable) filtre.favorable = req.query.favorable === 'true';
+  router.get('/:id', async (req, res) => {
+    try {
+      const matchup = await MatchupModel.findById(req.params.id);
+      if (!matchup) {
+        return res.status(404).json({ message: 'Matchup non trouvé.' });
+      }
+      res.json(matchup);
+    } catch (err) {
+      envoyerErreurServeur(
+        res,
+        err,
+        '❌ Erreur lors de la récupération du matchup.',
+      );
+    }
+  });
 
-    const matchups = await Matchup.find(filtre);
-    res.json(matchups);
-  } catch (err) {
-    res
-      .status(500)
-      .json({ message: 'Erreur lors de la récupération des matchups.' });
-  }
-});
+  router.post('/', async (req, res) => {
+    try {
+      const nouveau = await MatchupModel.create(req.body);
+      res.status(201).json(nouveau);
+    } catch (err) {
+      envoyerErreurValidation(
+        res,
+        '❌ Impossible de créer le matchup.',
+        (err as Error).message,
+      );
+    }
+  });
 
-// === GET /matchups/:id → un matchup par ID
-router.get('/:id', async (req: Request, res: Response) => {
-  try {
-    const matchup = await Matchup.findById(req.params.id);
-    if (!matchup)
-      return res.status(404).json({ message: 'Matchup non trouvé.' });
-    res.json(matchup);
-  } catch {
-    res
-      .status(500)
-      .json({ message: 'Erreur lors de la récupération du matchup.' });
-  }
-});
+  router.put('/:id', async (req, res) => {
+    try {
+      const misAJour = await MatchupModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true },
+      );
+      if (!misAJour) {
+        return res.status(404).json({ message: 'Matchup non trouvé.' });
+      }
+      res.json(misAJour);
+    } catch (err) {
+      envoyerErreurValidation(
+        res,
+        '❌ Impossible de mettre à jour le matchup.',
+        (err as Error).message,
+      );
+    }
+  });
 
-// === POST /matchups → créer un matchup
-router.post('/', async (req: Request, res: Response) => {
-  try {
-    const matchup = new Matchup(req.body);
-    await matchup.save();
-    res.status(201).json(matchup);
-  } catch (err: any) {
-    res.status(400).json({
-      message: 'Erreur lors de la création du matchup',
-      details: err.message,
-    });
-  }
-});
+  router.delete('/:id', async (req, res) => {
+    try {
+      const supprime = await MatchupModel.findByIdAndDelete(req.params.id);
+      if (!supprime) {
+        return res.status(404).json({ message: 'Matchup non trouvé.' });
+      }
+      res.json({ message: 'Matchup supprimé avec succès.' });
+    } catch (err) {
+      envoyerErreurServeur(
+        res,
+        err,
+        '❌ Impossible de supprimer le matchup.',
+      );
+    }
+  });
 
-// === PUT /matchups/:id → mettre à jour un matchup
-router.put('/:id', async (req: Request, res: Response) => {
-  try {
-    const matchup = await Matchup.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!matchup)
-      return res.status(404).json({ message: 'Matchup non trouvé.' });
-    res.json(matchup);
-  } catch (err: any) {
-    res.status(400).json({
-      message: 'Erreur lors de la mise à jour du matchup',
-      details: err.message,
-    });
-  }
-});
+  return router;
+};
 
-// === DELETE /matchups/:id → supprimer un matchup
-router.delete('/:id', async (req: Request, res: Response) => {
-  try {
-    const result = await Matchup.findByIdAndDelete(req.params.id);
-    if (!result)
-      return res.status(404).json({ message: 'Matchup non trouvé.' });
-    res.json({ message: 'Matchup supprimé avec succès.' });
-  } catch {
-    res
-      .status(500)
-      .json({ message: 'Erreur lors de la suppression du matchup.' });
-  }
-});
-
-module.exports = router;
+export default createMatchupsRouter();

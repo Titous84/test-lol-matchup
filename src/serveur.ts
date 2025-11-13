@@ -1,53 +1,66 @@
-// Point d'entrée de l'API League of Legends Matchups
-
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-
-// Import des routes
-const championsRouter = require('./routes/champions');
-const matchupsRouter = require('./routes/matchups');
+import cors from 'cors';
+import express from 'express';
+import mongoose from 'mongoose';
+import { env } from './config/env';
+import createAuthRouter from './routes/auth';
+import createChampionsRouter from './routes/champions';
+import createMatchupsRouter from './routes/matchups';
+import createCommentairesRouter from './routes/commentaires';
 
 const app = express();
-const port = process.env.PORT || 4000;
 
-// === Middlewares globaux ===
-app.use(cors()); // Autorise les requêtes cross-origin (utile pour React)
-app.use(express.json()); // Permet de lire les corps JSON
+app.use(cors());
+app.use(express.json());
 
-// === Connexion MongoDB locale ===
-mongoose
-  .connect('mongodb://127.0.0.1:27017/league')
-  .then(() => console.log('✅ Connecté à MongoDB local'))
-  .catch((err: any) => console.error('❌ Erreur de connexion MongoDB :', err));
-
-// === Routes principales ===
-app.use('/champions', championsRouter);
-app.use('/matchups', matchupsRouter);
-
-// Page d'accueil → mini documentation JSON
-app.get('/', (req: any, res: any) => {
+app.get('/', (_req, res) => {
   res.json({
-    message: "Bienvenue dans l'API League of Legends Matchups 🚀",
-    routes: {
+    message: "Bienvenue sur l'API League Matchups", 
+    documentation: {
       champions: {
-        GET: '/champions → liste tous les champions (filtres: ?role=Mage, ?nom=Ahri)',
-        GET_id: '/champions/:id → récupère un champion par son ID',
+        liste: 'GET /champions?role=&region=&nom=',
+        detail: 'GET /champions/:id',
+        creation: 'POST /champions',
+        miseAJour: 'PUT /champions/:id',
+        suppression: 'DELETE /champions/:id',
       },
       matchups: {
-        GET: '/matchups → liste tous les matchups (filtres: ?championPrincipal=Ahri, ?favorable=true)',
-        GET_id: '/matchups/:id → récupère un matchup par ID',
-        POST: '/matchups → crée un nouveau matchup',
-        PUT: '/matchups/:id → met à jour un matchup',
-        DELETE: '/matchups/:id → supprime un matchup',
+        liste: 'GET /matchups?championPrincipal=&championAdverse=&voie=&favorable=',
+        detail: 'GET /matchups/:id',
+        creation: 'POST /matchups',
+        miseAJour: 'PUT /matchups/:id',
+        suppression: 'DELETE /matchups/:id',
+      },
+      commentaires: {
+        liste: 'GET /commentaires?matchup=&auteur=',
+        detail: 'GET /commentaires/:id',
+        creation: 'POST /commentaires (JWT requis)',
+        miseAJour: 'PUT /commentaires/:id (JWT requis)',
+        suppression: 'DELETE /commentaires/:id (JWT requis)',
+      },
+      auth: {
+        inscription: 'POST /auth/inscription',
+        connexion: 'POST /auth/connexion',
+        profil: 'GET /auth/profil',
       },
     },
   });
 });
 
-// === Lancement du serveur ===
-app.listen(port, () => {
-  console.log(`🚀 Serveur démarré sur http://localhost:${port}`);
-});
+app.use('/auth', createAuthRouter());
+app.use('/champions', createChampionsRouter());
+app.use('/matchups', createMatchupsRouter());
+app.use('/commentaires', createCommentairesRouter());
 
-// Pour exécuter : npx ts-node src/serveur.ts
+mongoose
+  .connect(env.mongodbUri)
+  .then(() => {
+    app.listen(env.port, () => {
+      console.log(`🚀 Serveur prêt sur http://localhost:${env.port}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Impossible de se connecter à MongoDB', err);
+    process.exit(1);
+  });
+
+export { app };

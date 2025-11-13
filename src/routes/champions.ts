@@ -1,42 +1,94 @@
-// Routes Express pour gérer la collection "champions"
+import express from 'express';
+import type { Model } from 'mongoose';
+import { Champion, type ChampionDocument } from '../models/Champion';
+import { envoyerErreurServeur, envoyerErreurValidation } from '../utils/reponses';
 
-const express = require('express');
-const { Champion } = require('../modèles/Champion');
+export const createChampionsRouter = (
+  ChampionModel: Model<ChampionDocument> = Champion,
+) => {
+  const router = express.Router();
 
-// Typage Express (astuce CommonJS)
-type Request = import('express').Request;
-type Response = import('express').Response;
+  router.get('/', async (req, res) => {
+    try {
+      const filtre: Record<string, unknown> = {};
+      if (req.query.role) filtre.roles = req.query.role;
+      if (req.query.region) filtre.region = req.query.region;
+      if (req.query.nom)
+        filtre.nom = { $regex: req.query.nom, $options: 'i' };
 
-const router = express.Router();
+      const champions = await ChampionModel.find(filtre);
+      res.json(champions);
+    } catch (err) {
+      envoyerErreurServeur(res, err, '❌ Impossible de récupérer les champions.');
+    }
+  });
 
-// === GET /champions → tous les champions (avec filtres facultatifs)
-router.get('/', async (req: Request, res: Response) => {
-  try {
-    const filtre: any = {};
-    if (req.query.role) filtre.role = req.query.role;
-    if (req.query.nom) filtre.nom = { $regex: req.query.nom, $options: 'i' };
+  router.get('/:id', async (req, res) => {
+    try {
+      const champion = await ChampionModel.findById(req.params.id);
+      if (!champion) {
+        return res.status(404).json({ message: 'Champion non trouvé.' });
+      }
+      res.json(champion);
+    } catch (err) {
+      envoyerErreurServeur(
+        res,
+        err,
+        '❌ Erreur lors de la récupération du champion.',
+      );
+    }
+  });
 
-    const champions = await Champion.find(filtre);
-    res.json(champions);
-  } catch {
-    res.status(500).json({
-      message: '❌ Erreur serveur lors de la récupération des champions.',
-    });
-  }
-});
+  router.post('/', async (req, res) => {
+    try {
+      const nouveau = await ChampionModel.create(req.body);
+      res.status(201).json(nouveau);
+    } catch (err) {
+      envoyerErreurValidation(
+        res,
+        '❌ Impossible de créer le champion.',
+        (err as Error).message,
+      );
+    }
+  });
 
-// === GET /champions/:id → un champion par ID
-router.get('/:id', async (req: Request, res: Response) => {
-  try {
-    const champion = await Champion.findById(req.params.id);
-    if (!champion)
-      return res.status(404).json({ message: 'Champion non trouvé.' });
-    res.json(champion);
-  } catch (err) {
-    res.status(500).json({
-      message: '❌ Erreur serveur lors de la récupération du champion.',
-    });
-  }
-});
+  router.put('/:id', async (req, res) => {
+    try {
+      const misAJour = await ChampionModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true },
+      );
+      if (!misAJour) {
+        return res.status(404).json({ message: 'Champion non trouvé.' });
+      }
+      res.json(misAJour);
+    } catch (err) {
+      envoyerErreurValidation(
+        res,
+        '❌ Impossible de mettre à jour le champion.',
+        (err as Error).message,
+      );
+    }
+  });
 
-module.exports = router;
+  router.delete('/:id', async (req, res) => {
+    try {
+      const supprime = await ChampionModel.findByIdAndDelete(req.params.id);
+      if (!supprime) {
+        return res.status(404).json({ message: 'Champion non trouvé.' });
+      }
+      res.json({ message: 'Champion supprimé avec succès.' });
+    } catch (err) {
+      envoyerErreurServeur(
+        res,
+        err,
+        '❌ Impossible de supprimer le champion.',
+      );
+    }
+  });
+
+  return router;
+};
+
+export default createChampionsRouter();
