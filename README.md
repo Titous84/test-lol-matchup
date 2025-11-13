@@ -1,203 +1,200 @@
-# 🌌 API League of Legends Matchups
+# 🌌 Plateforme League of Legends Matchups
 
-Projet intégrateur – Développement Web 3 (Automne 2025)  
-Auteur : Nathan Reyes  
-Évaluation : 50% de la note finale
+Projet intégrateur – Développement Web 3 (Automne 2025)
 
----
-
-## 📖 Description
-
-Cette API permet de **gérer une base de données League of Legends** :
-
-- **Champions** (nom, rôle, titre, statistiques de base).
-- **Matchups** (résultats des parties jouées entre deux champions, avec notes et statistiques personnelles).
-
-Objectif : avoir une application complète qui aide le joueur à analyser ses confrontations (winrate, avantages par niveau, notes personnelles).
+Cette version consolide **API Express + MongoDB** et **frontend React** (i18n FR/EN) afin de suivre les confrontations entre champions, les statistiques provenant de Kaggle et les commentaires privés protégés par JWT.
 
 ---
 
-## 📂 Structure du projet
+## 🏗️ Architecture globale
 
 ```
 examen-api-league-matchups/
-│── src/
-│   ├── modèles/           # Schémas Mongoose (Champion.ts, Matchup.ts)
-│   ├── routes/            # Routes Express (champions.ts, matchups.ts)
-│   ├── tests/             # Jasmine + Supertest
-│   └── serveur.ts         # Point d'entrée Express
-│
-│── dev/                   # Données & assets de développement
-│   ├── champions.json                 # Fichier officiel Riot (fr_FR)
-│   ├── champions_simplifies.json      # Fichier prêt pour MongoDB
-│   └── images_champions/              # .png téléchargés (Data Dragon)
-│
-│── scripts/               # Scripts utilitaires Node/TS
-│   ├── telecharger_champions.ts
-│   ├── convertir_champions.ts
-│   └── importer_champions.ts
-│
-│── spec/support/jasmine.json
-│── tsconfig.json
-│── package.json
+├── src/
+│   ├── config/               # Chargement .env
+│   ├── middlewares/          # Authentification JWT
+│   ├── models/               # Schémas Champion, Matchup, Commentaire, Utilisateur
+│   ├── routes/               # Routes Express modulaires (auth, champions, matchups, commentaires)
+│   ├── services/             # Génération JWT custom, hachage Scrypt
+│   ├── tests/                # Jasmine + Supertest (mock in-memory)
+│   └── serveur.ts            # Point d’entrée Express
+├── scripts/
+│   └── importKaggle.ts       # Import CSV champions + matchups
+├── lol-matchups/             # Application React (TypeScript, hooks, i18n maison)
+│   ├── src/components        # ChampionCard, MatchupCard, CommentList, etc.
+│   ├── src/contexts          # AuthContext + TranslationContext
+│   ├── src/pages             # ChampionList, MatchupList, MatchupForm, Auth
+│   └── src/services/api.ts   # Client HTTP `fetch`
+└── README.md
 ```
 
 ---
 
-## ⚙️ Installation locale
+## ⚙️ Préparation locale pas-à-pas
 
-### 1) Cloner & installer
+1. **Variables d’environnement**
+   ```bash
+   cp .env.example .env
+   # adapter MONGODB_URI si nécessaire
+   ```
+2. **Installer les dépendances backend**
+   ```bash
+   npm install
+   ```
+3. **Déposer les fichiers Kaggle**
+   - Placer les 7 fichiers CSV/JSON fournis par l’enseignant dans `dev/data/` (n’importe quels noms de fichiers).
+   - Chaque fichier doit contenir les colonnes standard (`MainChampion`, `OpponentChampion`, `Lane`, `WinRate`, `Wins`, `Losses`, `Games`, `KDA`, `AdvantageLevel`, `Difficulty`, `Favorable`, `Tips`, `Tags`). Le script accepte aussi leurs équivalents FR/EN.
+4. **Importer les données dans MongoDB**
+   ```bash
+   npm run seed:dev            # importe champions + matchups en analysant dev/data/
+   ```
+5. **Démarrer l’API Express**
+   ```bash
+   npm run dev                 # http://localhost:4000
+   ```
+6. **Démarrer le frontend**
+   ```bash
+   cd lol-matchups
+   npm install
+   npm start                   # React sur http://localhost:3000
+   ```
+
+> Les images statiques des champions sont exposées via `http://localhost:4000/images/champions/<Nom>.png`.
+
+---
+
+## 🗄️ Modèles MongoDB & validations
+
+| Modèle       | Champs clés (extraits)                                                                                                                                                                | Validations                                                                                                                                         |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Champion** | `nom` unique, `titre`, `roles[]`, `region`, `attaque`, `defense`, `magie`, `mobilite`, `portee`, `icone`, `enRotation`, `tags[]`, `miseAJour`                                          | Types stricts (String/Number/Boolean/Array/Date), bornes 0-10, portée enum                                                                           |
+| **Matchup**  | `championPrincipal`, `championAdverse`, `voie`, `nbParties`, `nbVictoires`, `nbDefaites`, `tauxVictoire`, `kdaMoyen`, `niveauAvantage`, `difficulte`, `favorable`, `conseils[]`, `tags[]` | Validations natives + custom : champions différents, `nbVictoires+nbDefaites ≤ nbParties`, cohérence `tauxVictoire`, niveau d’avantage 1-18          |
+| **Commentaire** | `matchup`, `auteur`, `contenu`, `humeur`, `difficulteRessentie`, `visible`, `langue`, timestamps                                                                                   | Longueur contenu (10-1000), mood enum, update automatique `misAJourLe`                                                                               |
+| **Utilisateur** | `prenom`, `nom`, `courriel` unique, `motDePasse` (haché via scrypt), `roles[]`, `actif`, `derniereConnexion`, `preferencesLangue`, `avatar`, `creeLe`                              | Regex courriel, min 8 caractères, roles limités (`joueur`, `administrateur`, `analyste`)                                                             |
+
+Les erreurs sont renvoyées en français avec le détail Mongoose.
+
+---
+
+## 🚀 API Express (http://localhost:4000)
+
+`GET /` → mini documentation JSON listant toutes les routes.
+
+### Champions
+
+| Méthode | Route                              | Description                                                          |
+| ------: | ---------------------------------- | -------------------------------------------------------------------- |
+| GET     | `/champions?role=&region=&nom=`    | Listing + filtres dynamiques                                         |
+| GET     | `/champions/:id`                   | Lecture d’un champion                                                |
+| POST    | `/champions`                       | Création (tous les champs requis)                                    |
+| PUT     | `/champions/:id`                   | Mise à jour avec `runValidators`                                     |
+| DELETE  | `/champions/:id`                   | Suppression                                                          |
+
+### Matchups
+
+| Méthode | Route                                               | Description                                                           |
+| ------: | --------------------------------------------------- | --------------------------------------------------------------------- |
+| GET     | `/matchups?championPrincipal=&championAdverse=&voie=&favorable=` | Listing + filtres multi critères                                     |
+| GET     | `/matchups/:id`                                     | Lecture détaillée                                                     |
+| POST    | `/matchups`                                         | Création (validations personnalisées)                                |
+| PUT     | `/matchups/:id`                                     | Mise à jour                                                           |
+| DELETE  | `/matchups/:id`                                     | Suppression                                                           |
+
+### Commentaires (JWT obligatoire)
+
+| Méthode | Route                  | Description                                             |
+| ------: | ---------------------- | ------------------------------------------------------- |
+| GET     | `/commentaires?matchup=&auteur=` | Liste filtrée                                        |
+| GET     | `/commentaires/:id`    | Lecture                                                 |
+| POST    | `/commentaires`        | Création (auteur injecté depuis le token)               |
+| PUT     | `/commentaires/:id`    | Mise à jour (auteur ou admin uniquement)                |
+| DELETE  | `/commentaires/:id`    | Suppression sécurisée                                   |
+
+### Authentification
+
+| Méthode | Route              | Description                                             |
+| ------: | ------------------ | ------------------------------------------------------- |
+| POST    | `/auth/inscription`| Création d’un compte + token signé maison (HS256)       |
+| POST    | `/auth/connexion`  | Connexion + mise à jour `derniereConnexion`             |
+| GET     | `/auth/profil`     | Profil courant (JWT requis)                             |
+
+JWT maison : signature HMAC-SHA256 via `crypto`. Expiration 8 h.
+
+---
+
+## 🔄 Scripts & données Kaggle
+
+### Import automatique prêt à l’emploi
 
 ```bash
-git clone https://github.com/ton-compte/examen-api-league-matchups.git
-cd examen-api-league-matchups
-npm install
+npm run seed:dev                         # lit dev/data/ + dev/champions.json
+npm run seed:dev ./autre/dossier         # chemin personnalisé pour les CSV/JSON
 ```
 
-### 2) Lancer l'API (MongoDB local requis)
+1. Lit `dev/champions.json` pour reconstruire la collection `champions` (168 entrées, liens d’icônes `/images/champions/...`).
+2. Parcourt **tous** les fichiers `.csv`/`.json` présents dans `dev/data/`, peu importe leur nom.
+3. Reconnaît automatiquement les colonnes principales (noms FR/EN, winrate en pourcentage ou ratio, lanes, tips, tags, etc.).
+4. Fusionne les fichiers, convertit les noms de champions en ObjectId (via `Champion.nom`) puis alimente `matchups`.
+5. Affiche un récapitulatif (`matchups` importés / ignorés si un champion est absent du catalogue).
 
-```bash
-npm run dev
-```
-
-Serveur : **http://localhost:3000**  
-BD locale : **mongodb://127.0.0.1:27017/league**
-
----
-
-## 🗄️ Base de données
-
-- **MongoDB local** par défaut : `mongodb://127.0.0.1:27017/league`
-- Collections :
-  - `champions` (~160 docs importés de Data Dragon)
-  - `matchups` (saisis après les parties)
-
-### Scripts utiles
-
-- `scripts/telecharger_champions.ts` → télécharge toutes les images `.png` des champions.
-- `scripts/convertir_champions.ts` → convertit le JSON officiel Riot en `champions_simplifies.json`.
-- `scripts/importer_champions.ts` → insère le JSON simplifié dans MongoDB (via Mongoose).
-
-> Astuce : les scripts sont pensés pour un projet **CommonJS** (utilisent `require`).
+> L’ancien script `scripts/importKaggle.ts` reste disponible si vous souhaitez fournir manuellement deux CSV spécifiques.
 
 ---
 
-## Importer les données de test
+## 🧪 Tests Jasmine + Supertest
 
-Le fichier `dev/champions_simplifies.json` peut être importé via **MongoDB Compass** (Collections → `Import Data`).
-
----
-
-## 🚀 Endpoints disponibles
-
-### 📌 Champions
-
-| Méthode | Route                  | Description                                     |
-| ------: | ---------------------- | ----------------------------------------------- |
-|     GET | `/champions`           | Liste tous les champions                        |
-|     GET | `/champions?role=Mage` | Filtre par rôle                                 |
-|     GET | `/champions?nom=ahri`  | Filtre par nom (partiel, insensible à la casse) |
-|     GET | `/champions/:id`       | Récupère un champion par ID                     |
-
-### 📌 Matchups
-
-| Méthode | Route                              | Description                   |
-| ------: | ---------------------------------- | ----------------------------- |
-|     GET | `/matchups`                        | Liste tous les matchups       |
-|     GET | `/matchups?championPrincipal=Ahri` | Filtre par champion principal |
-|     GET | `/matchups?championAdverse=Zed`    | Filtre par champion adverse   |
-|     GET | `/matchups?favorable=true`         | Filtre par statut favorable   |
-|     GET | `/matchups/:id`                    | Récupère un matchup par ID    |
-|    POST | `/matchups`                        | Crée un nouveau matchup       |
-|     PUT | `/matchups/:id`                    | Met à jour un matchup         |
-|  DELETE | `/matchups/:id`                    | Supprime un matchup           |
-
-### Exemples (Bruno/Postman)
-
-- `GET http://localhost:3000/champions?role=Mage`
-- `GET http://localhost:3000/champions?nom=ahri`
-- `POST http://localhost:3000/matchups` (Body JSON) :
-
-```json
-{
-  "championPrincipal": "Ahri",
-  "championAdverse": "Zed",
-  "nbParties": 3,
-  "nbVictoires": 2,
-  "nbDefaites": 1,
-  "avantageNiveau": 6,
-  "favorable": true,
-  "notesPerso": ["Jouer safe avant niveau 6"]
-}
-```
-
----
-
-## 🧪 Tests automatisés
-
-- Outils : **Jasmine + Supertest**
-- Fichiers : `src/tests/champions.api.spec.ts`, `src/tests/matchups.api.spec.ts`
-
-### Lancer les tests
+Tests isolés de MongoDB grâce à des **modèles en mémoire** injectés dans chaque router.
 
 ```bash
 npm test
 ```
 
-### Résultat attendu
+Couvre toutes les méthodes HTTP :
+- `champions.api.spec.ts`
+- `matchups.api.spec.ts`
+- `commentaires.api.spec.ts`
+- `auth.api.spec.ts`
 
+---
+
+## 💻 Frontend React (`lol-matchups/`)
+
+Fonctionnalités principales :
+- **i18n FR/EN** via un TranslationContext maison + switcher global.
+- **AuthContext** (login/register, token localStorage, statut dans l’entête).
+- **MatchupList** : affichage, filtres, sélection, suppression sécurisée, panneau de commentaires (CRUD complet) + édition inline.
+- **MatchupForm** : ≥ 5 champs liés aux validations backend (voies, taux, niv. avantage, checkboxes…).
+- **ChampionList** : filtres role/région, cartes responsives.
+- **Auth** : formulaire double (connexion / inscription) + changement de langue.
+- **Design responsive** (mobile <640px, tablette <960px, bureau) avec composants réutilisables.
+
+### Démarrer le frontend
+
+```bash
+cd lol-matchups
+npm install
+npm start
 ```
-Started
-.......
-7 specs, 0 failures
-Finished in 0.15 seconds
-```
+
+Configurer l’URL de l’API via `REACT_APP_API_URL` si besoin (par défaut `http://localhost:4000`).
 
 ---
 
-## 📜 Validations intégrées
+## ✅ Checklist déploiement
 
-### Matchups
-
-- **Validation native** :
-  - `nbParties` ≥ 1
-  - `avantageNiveau` entre 1 et 18
-- **Validation personnalisée** :
-  - `nbVictoires + nbDefaites = nbParties`
-  - `championPrincipal ≠ championAdverse`
-
-### Champions
-
-- Nom **unique**.
-- Champs obligatoires pour les rôles, images et stats de base.
+1. MongoDB Atlas + variables d’environnement (`MONGODB_URI`, `JWT_SECRET`).
+2. Render / Railway pour l’API (`npm run dev` → `ts-node src/serveur.ts`).
+3. Build React (`npm run build` dans `lol-matchups/`) puis publication Netlify/GitHub Pages.
+4. Mettre à jour `REACT_APP_API_URL` selon l’URL publique de l’API.
 
 ---
 
-## 🧭 Page d’accueil de l’API
+## 🔜 TODO prioritaire
 
-`GET /` renvoie une mini documentation JSON listant les routes disponibles et leurs filtres.
+1. **Seeder Kaggle** : intégrer les vrais fichiers fournis par le professeur via `scripts/importKaggle.ts` et valider les conversions de colonnes.
+2. **Protection avancée** : limiter la création/mise à jour des matchups aux rôles `administrateur` (middleware rôle).
+3. **Tableau de bord React** : ajouter des graphiques (ex. Chart.js) pour les winrates par champion.
+4. **Tests E2E** : ajouter une suite Playwright/Cypress simulant la création d’un compte + ajout de commentaires.
+5. **Publication** : brancher Render + Netlify avec variables d’environnement, ajouter la configuration CORS stricte.
 
----
-
-## 🌍 Publication (à venir)
-
-- API : Render / Railway
-- Base de données : MongoDB Atlas
-- Variables d’environnement : `MONGO_URI` (à substituer à l’URI locale pour la prod)
-
----
-
-## 🧩 Pistes d’amélioration (pour la partie React)
-
-- Authentification (JWT) pour sécuriser la création/édition de matchups.
-- Tableau de bord (winrate par champion, courbes d’évolution).
-- Internationalisation (FR/EN).
-- Design mobile-first responsive.
-
----
-
-## 👨‍🏫 Auteur
-
-Projet réalisé dans le cadre du cours **Développement Web 3 – Projet intégrateur**  
-Cégep de Victoriaville – Automne 2025  
-Enseignant : Étienne Rivard
+Ces étapes permettent de finaliser complètement le projet intégrateur selon le cahier des charges.
