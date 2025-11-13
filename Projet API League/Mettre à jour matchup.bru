@@ -1,0 +1,33 @@
+meta {
+  name: Mettre à jour matchup
+  type: http
+  seq: 8
+}
+
+put {
+  url: http://localhost:3000/matchups/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 68ded666c2802992970328bc
+}
+
+body:json {
+  {
+    "championPrincipal": "Zed",
+    "championAdverse": "Ahri",
+    "nbParties": 6,
+    "nbVictoires": 5,
+    "nbDefaites": 1,
+    "avantageNiveau": 3,
+    "favorable": true,
+    "notesPerso": ["Ahri domine après niveau 6"]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,2145 @@
+[
+  {
+    "nom": "Aatrox",
+    "titre": "Épée des Darkin",
+    "role": [
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Aatrox.png",
+    "attaque": 8,
+    "defense": 4,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Ahri",
+    "titre": "Renard à neuf queues",
+    "role": [
+      "Mage",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Ahri.png",
+    "attaque": 3,
+    "defense": 4,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Akali",
+    "titre": "Assassin rebelle",
+    "role": [
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Akali.png",
+    "attaque": 5,
+    "defense": 3,
+    "magie": 8,
+    "difficulte": 7
+  },
+  {
+    "nom": "Akshan",
+    "titre": "Sentinelle rebelle",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Akshan.png",
+    "attaque": 0,
+    "defense": 0,
+    "magie": 0,
+    "difficulte": 0
+  },
+  {
+    "nom": "Alistar",
+    "titre": "Minotaure",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Alistar.png",
+    "attaque": 6,
+    "defense": 9,
+    "magie": 5,
+    "difficulte": 7
+  },
+  {
+    "nom": "Amumu",
+    "titre": "Momie mélancolique",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Amumu.png",
+    "attaque": 2,
+    "defense": 6,
+    "magie": 8,
+    "difficulte": 3
+  },
+  {
+    "nom": "Anivia",
+    "titre": "Cryophénix",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Anivia.png",
+    "attaque": 1,
+    "defense": 4,
+    "magie": 10,
+    "difficulte": 10
+  },
+  {
+    "nom": "Annie",
+    "titre": "Enfant des ténèbres",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Annie.png",
+    "attaque": 2,
+    "defense": 3,
+    "magie": 10,
+    "difficulte": 6
+  },
+  {
+    "nom": "Aphelios",
+    "titre": "Arme des Lunaris",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Aphelios.png",
+    "attaque": 6,
+    "defense": 2,
+    "magie": 1,
+    "difficulte": 10
+  },
+  {
+    "nom": "Ashe",
+    "titre": "Archère de givre",
+    "role": [
+      "Marksman",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Ashe.png",
+    "attaque": 7,
+    "defense": 3,
+    "magie": 2,
+    "difficulte": 4
+  },
+  {
+    "nom": "Aurelion Sol",
+    "titre": "Forgeur d'étoiles",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\AurelionSol.png",
+    "attaque": 2,
+    "defense": 3,
+    "magie": 8,
+    "difficulte": 7
+  },
+  {
+    "nom": "Aurora",
+    "titre": "Sorcière d'entre les mondes",
+    "role": [
+      "Mage",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Aurora.png",
+    "attaque": 3,
+    "defense": 4,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Azir",
+    "titre": "Empereur des sables",
+    "role": [
+      "Mage",
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Azir.png",
+    "attaque": 6,
+    "defense": 3,
+    "magie": 8,
+    "difficulte": 9
+  },
+  {
+    "nom": "Bard",
+    "titre": "Gardien errant",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Bard.png",
+    "attaque": 4,
+    "defense": 4,
+    "magie": 5,
+    "difficulte": 9
+  },
+  {
+    "nom": "Bel'Veth",
+    "titre": "Impératrice du Néant",
+    "role": [
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Belveth.png",
+    "attaque": 4,
+    "defense": 2,
+    "magie": 7,
+    "difficulte": 10
+  },
+  {
+    "nom": "Blitzcrank",
+    "titre": "Golem de vapeur",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Blitzcrank.png",
+    "attaque": 4,
+    "defense": 8,
+    "magie": 5,
+    "difficulte": 4
+  },
+  {
+    "nom": "Brand",
+    "titre": "Vengeur flamboyant",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Brand.png",
+    "attaque": 2,
+    "defense": 2,
+    "magie": 9,
+    "difficulte": 4
+  },
+  {
+    "nom": "Braum",
+    "titre": "Cœur de Freljord",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Braum.png",
+    "attaque": 3,
+    "defense": 9,
+    "magie": 4,
+    "difficulte": 3
+  },
+  {
+    "nom": "Briar",
+    "titre": "Faim insatiable",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Briar.png",
+    "attaque": 9,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 3
+  },
+  {
+    "nom": "Caitlyn",
+    "titre": "Shérif de Piltover",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Caitlyn.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 2,
+    "difficulte": 6
+  },
+  {
+    "nom": "Camille",
+    "titre": "Ombre d'acier",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Camille.png",
+    "attaque": 8,
+    "defense": 6,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Cassiopeia",
+    "titre": "Étreinte du serpent",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Cassiopeia.png",
+    "attaque": 2,
+    "defense": 3,
+    "magie": 9,
+    "difficulte": 10
+  },
+  {
+    "nom": "Cho'Gath",
+    "titre": "Terreur noire",
+    "role": [
+      "Tank",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Chogath.png",
+    "attaque": 3,
+    "defense": 7,
+    "magie": 7,
+    "difficulte": 5
+  },
+  {
+    "nom": "Corki",
+    "titre": "Artilleur téméraire",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Corki.png",
+    "attaque": 8,
+    "defense": 3,
+    "magie": 6,
+    "difficulte": 6
+  },
+  {
+    "nom": "Darius",
+    "titre": "Main de Noxus",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Darius.png",
+    "attaque": 9,
+    "defense": 5,
+    "magie": 1,
+    "difficulte": 2
+  },
+  {
+    "nom": "Diana",
+    "titre": "Mépris de la lune",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Diana.png",
+    "attaque": 7,
+    "defense": 6,
+    "magie": 8,
+    "difficulte": 4
+  },
+  {
+    "nom": "Draven",
+    "titre": "Glorieux exécuteur",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Draven.png",
+    "attaque": 9,
+    "defense": 3,
+    "magie": 1,
+    "difficulte": 8
+  },
+  {
+    "nom": "Dr. Mundo",
+    "titre": "Dément de Zaun",
+    "role": [
+      "Tank",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\DrMundo.png",
+    "attaque": 5,
+    "defense": 7,
+    "magie": 6,
+    "difficulte": 5
+  },
+  {
+    "nom": "Ekko",
+    "titre": "Fractureur du temps",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Ekko.png",
+    "attaque": 5,
+    "defense": 3,
+    "magie": 7,
+    "difficulte": 8
+  },
+  {
+    "nom": "Elise",
+    "titre": "Reine araignée",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Elise.png",
+    "attaque": 6,
+    "defense": 5,
+    "magie": 7,
+    "difficulte": 9
+  },
+  {
+    "nom": "Evelynn",
+    "titre": "Démon sadique",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Evelynn.png",
+    "attaque": 4,
+    "defense": 2,
+    "magie": 7,
+    "difficulte": 10
+  },
+  {
+    "nom": "Ezreal",
+    "titre": "Explorateur prodigue",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Ezreal.png",
+    "attaque": 7,
+    "defense": 2,
+    "magie": 6,
+    "difficulte": 7
+  },
+  {
+    "nom": "Fiddlesticks",
+    "titre": "Effroi nocturne",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Fiddlesticks.png",
+    "attaque": 2,
+    "defense": 3,
+    "magie": 9,
+    "difficulte": 9
+  },
+  {
+    "nom": "Fiora",
+    "titre": "Sublime bretteuse",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Fiora.png",
+    "attaque": 10,
+    "defense": 4,
+    "magie": 2,
+    "difficulte": 3
+  },
+  {
+    "nom": "Fizz",
+    "titre": "Filou des mers",
+    "role": [
+      "Assassin",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Fizz.png",
+    "attaque": 6,
+    "defense": 4,
+    "magie": 7,
+    "difficulte": 6
+  },
+  {
+    "nom": "Galio",
+    "titre": "Colosse",
+    "role": [
+      "Tank",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Galio.png",
+    "attaque": 1,
+    "defense": 10,
+    "magie": 6,
+    "difficulte": 5
+  },
+  {
+    "nom": "Gangplank",
+    "titre": "Fléau des mers",
+    "role": [
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Gangplank.png",
+    "attaque": 7,
+    "defense": 6,
+    "magie": 4,
+    "difficulte": 9
+  },
+  {
+    "nom": "Garen",
+    "titre": "Force de Demacia",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Garen.png",
+    "attaque": 7,
+    "defense": 7,
+    "magie": 1,
+    "difficulte": 5
+  },
+  {
+    "nom": "Gnar",
+    "titre": "Chaînon manquant",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Gnar.png",
+    "attaque": 6,
+    "defense": 5,
+    "magie": 5,
+    "difficulte": 8
+  },
+  {
+    "nom": "Gragas",
+    "titre": "Agitateur",
+    "role": [
+      "Fighter",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Gragas.png",
+    "attaque": 4,
+    "defense": 7,
+    "magie": 6,
+    "difficulte": 5
+  },
+  {
+    "nom": "Graves",
+    "titre": "Hors-la-loi",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Graves.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 3
+  },
+  {
+    "nom": "Gwen",
+    "titre": "Couturière sacrée",
+    "role": [
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Gwen.png",
+    "attaque": 7,
+    "defense": 4,
+    "magie": 5,
+    "difficulte": 5
+  },
+  {
+    "nom": "Hecarim",
+    "titre": "Ombre de la guerre",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Hecarim.png",
+    "attaque": 8,
+    "defense": 6,
+    "magie": 4,
+    "difficulte": 6
+  },
+  {
+    "nom": "Heimerdinger",
+    "titre": "Inventeur réputé",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Heimerdinger.png",
+    "attaque": 2,
+    "defense": 6,
+    "magie": 8,
+    "difficulte": 8
+  },
+  {
+    "nom": "Hwei",
+    "titre": "Visionnaire",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Hwei.png",
+    "attaque": 7,
+    "defense": 1,
+    "magie": 8,
+    "difficulte": 9
+  },
+  {
+    "nom": "Illaoi",
+    "titre": "Prêtresse du kraken",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Illaoi.png",
+    "attaque": 8,
+    "defense": 6,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Irelia",
+    "titre": "Danseuse des lames",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Irelia.png",
+    "attaque": 7,
+    "defense": 4,
+    "magie": 5,
+    "difficulte": 5
+  },
+  {
+    "nom": "Ivern",
+    "titre": "Aîné de la forêt",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Ivern.png",
+    "attaque": 3,
+    "defense": 5,
+    "magie": 7,
+    "difficulte": 7
+  },
+  {
+    "nom": "Janna",
+    "titre": "Avatar de l'air",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Janna.png",
+    "attaque": 3,
+    "defense": 5,
+    "magie": 7,
+    "difficulte": 7
+  },
+  {
+    "nom": "Jarvan IV",
+    "titre": "Exemple demacien",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\JarvanIV.png",
+    "attaque": 6,
+    "defense": 8,
+    "magie": 3,
+    "difficulte": 5
+  },
+  {
+    "nom": "Jax",
+    "titre": "Maître d'armes",
+    "role": [
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Jax.png",
+    "attaque": 7,
+    "defense": 5,
+    "magie": 7,
+    "difficulte": 5
+  },
+  {
+    "nom": "Jayce",
+    "titre": "Protecteur du futur",
+    "role": [
+      "Marksman",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Jayce.png",
+    "attaque": 8,
+    "defense": 4,
+    "magie": 3,
+    "difficulte": 7
+  },
+  {
+    "nom": "Jhin",
+    "titre": "Virtuose",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Jhin.png",
+    "attaque": 10,
+    "defense": 2,
+    "magie": 6,
+    "difficulte": 6
+  },
+  {
+    "nom": "Jinx",
+    "titre": "Gâchette folle",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Jinx.png",
+    "attaque": 9,
+    "defense": 2,
+    "magie": 4,
+    "difficulte": 6
+  },
+  {
+    "nom": "Kai'Sa",
+    "titre": "Fille du Néant",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Kaisa.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Kalista",
+    "titre": "Lance de la vengeance",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Kalista.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 4,
+    "difficulte": 7
+  },
+  {
+    "nom": "Karma",
+    "titre": "Sagesse incarnée",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Karma.png",
+    "attaque": 1,
+    "defense": 7,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Karthus",
+    "titre": "Liche",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Karthus.png",
+    "attaque": 2,
+    "defense": 2,
+    "magie": 10,
+    "difficulte": 7
+  },
+  {
+    "nom": "Kassadin",
+    "titre": "Chasseur du Néant",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Kassadin.png",
+    "attaque": 3,
+    "defense": 5,
+    "magie": 8,
+    "difficulte": 8
+  },
+  {
+    "nom": "Katarina",
+    "titre": "Lame sinistre",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Katarina.png",
+    "attaque": 4,
+    "defense": 3,
+    "magie": 9,
+    "difficulte": 8
+  },
+  {
+    "nom": "Kayle",
+    "titre": "Vertueuse",
+    "role": [
+      "Mage",
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Kayle.png",
+    "attaque": 6,
+    "defense": 6,
+    "magie": 7,
+    "difficulte": 7
+  },
+  {
+    "nom": "Kayn",
+    "titre": "Faucheur de l'ombre",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Kayn.png",
+    "attaque": 10,
+    "defense": 6,
+    "magie": 1,
+    "difficulte": 8
+  },
+  {
+    "nom": "Kennen",
+    "titre": "Cœur de la tempête",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Kennen.png",
+    "attaque": 6,
+    "defense": 4,
+    "magie": 7,
+    "difficulte": 4
+  },
+  {
+    "nom": "Kha'Zix",
+    "titre": "Faucheur du Néant",
+    "role": [
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Khazix.png",
+    "attaque": 9,
+    "defense": 4,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Kindred",
+    "titre": "Chasseurs éternels",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Kindred.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 2,
+    "difficulte": 4
+  },
+  {
+    "nom": "Kled",
+    "titre": "Cavalier colérique",
+    "role": [
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Kled.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 2,
+    "difficulte": 7
+  },
+  {
+    "nom": "Kog'Maw",
+    "titre": "Gueule des abysses",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\KogMaw.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 5,
+    "difficulte": 6
+  },
+  {
+    "nom": "K'Santé",
+    "titre": "Fierté de Nazumah",
+    "role": [
+      "Tank",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\KSante.png",
+    "attaque": 8,
+    "defense": 8,
+    "magie": 7,
+    "difficulte": 9
+  },
+  {
+    "nom": "LeBlanc",
+    "titre": "Manipulatrice",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Leblanc.png",
+    "attaque": 1,
+    "defense": 4,
+    "magie": 10,
+    "difficulte": 9
+  },
+  {
+    "nom": "Lee Sin",
+    "titre": "Moine aveugle",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\LeeSin.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Leona",
+    "titre": "Aube radieuse",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Leona.png",
+    "attaque": 4,
+    "defense": 8,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Lillia",
+    "titre": "Fleur timide",
+    "role": [
+      "Fighter",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Lillia.png",
+    "attaque": 0,
+    "defense": 2,
+    "magie": 10,
+    "difficulte": 8
+  },
+  {
+    "nom": "Lissandra",
+    "titre": "Sorcière de glace",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Lissandra.png",
+    "attaque": 2,
+    "defense": 5,
+    "magie": 8,
+    "difficulte": 6
+  },
+  {
+    "nom": "Lucian",
+    "titre": "Purificateur",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Lucian.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Lulu",
+    "titre": "Sorcière féérique",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Lulu.png",
+    "attaque": 4,
+    "defense": 5,
+    "magie": 7,
+    "difficulte": 5
+  },
+  {
+    "nom": "Lux",
+    "titre": "Dame de lumière",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Lux.png",
+    "attaque": 2,
+    "defense": 4,
+    "magie": 9,
+    "difficulte": 5
+  },
+  {
+    "nom": "Malphite",
+    "titre": "Éclat du monolithe",
+    "role": [
+      "Tank",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Malphite.png",
+    "attaque": 5,
+    "defense": 9,
+    "magie": 7,
+    "difficulte": 2
+  },
+  {
+    "nom": "Malzahar",
+    "titre": "Prophète du Néant",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Malzahar.png",
+    "attaque": 2,
+    "defense": 2,
+    "magie": 9,
+    "difficulte": 6
+  },
+  {
+    "nom": "Maokai",
+    "titre": "Tréant torturé",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Maokai.png",
+    "attaque": 3,
+    "defense": 8,
+    "magie": 6,
+    "difficulte": 3
+  },
+  {
+    "nom": "Maître Yi",
+    "titre": "Fine lame Wuju",
+    "role": [
+      "Assassin",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\MasterYi.png",
+    "attaque": 10,
+    "defense": 4,
+    "magie": 2,
+    "difficulte": 4
+  },
+  {
+    "nom": "Milio",
+    "titre": "Douce flamme",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Milio.png",
+    "attaque": 2,
+    "defense": 4,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Miss Fortune",
+    "titre": "Chasseuse de primes",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\MissFortune.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 5,
+    "difficulte": 1
+  },
+  {
+    "nom": "Wukong",
+    "titre": "Roi des singes",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\MonkeyKing.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 2,
+    "difficulte": 3
+  },
+  {
+    "nom": "Mordekaiser",
+    "titre": "Revenant de fer",
+    "role": [
+      "Fighter",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Mordekaiser.png",
+    "attaque": 4,
+    "defense": 6,
+    "magie": 7,
+    "difficulte": 4
+  },
+  {
+    "nom": "Morgana",
+    "titre": "Déchue",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Morgana.png",
+    "attaque": 1,
+    "defense": 6,
+    "magie": 8,
+    "difficulte": 1
+  },
+  {
+    "nom": "Naafiri",
+    "titre": "la meute de fer",
+    "role": [
+      "Assassin",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Naafiri.png",
+    "attaque": 9,
+    "defense": 5,
+    "magie": 0,
+    "difficulte": 2
+  },
+  {
+    "nom": "Nami",
+    "titre": "Aquamancienne",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Nami.png",
+    "attaque": 4,
+    "defense": 3,
+    "magie": 7,
+    "difficulte": 5
+  },
+  {
+    "nom": "Nasus",
+    "titre": "Gardien des sables",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Nasus.png",
+    "attaque": 7,
+    "defense": 5,
+    "magie": 6,
+    "difficulte": 6
+  },
+  {
+    "nom": "Nautilus",
+    "titre": "Titan des profondeurs",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Nautilus.png",
+    "attaque": 4,
+    "defense": 6,
+    "magie": 6,
+    "difficulte": 6
+  },
+  {
+    "nom": "Neeko",
+    "titre": "Caméléon curieux",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Neeko.png",
+    "attaque": 1,
+    "defense": 1,
+    "magie": 9,
+    "difficulte": 5
+  },
+  {
+    "nom": "Nidalee",
+    "titre": "Chasseresse bestiale",
+    "role": [
+      "Assassin",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Nidalee.png",
+    "attaque": 5,
+    "defense": 4,
+    "magie": 7,
+    "difficulte": 8
+  },
+  {
+    "nom": "Nilah",
+    "titre": "Joie incarnée",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Nilah.png",
+    "attaque": 8,
+    "defense": 4,
+    "magie": 4,
+    "difficulte": 10
+  },
+  {
+    "nom": "Nocturne",
+    "titre": "Éternel cauchemar",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Nocturne.png",
+    "attaque": 9,
+    "defense": 5,
+    "magie": 2,
+    "difficulte": 4
+  },
+  {
+    "nom": "Nunu et Willump",
+    "titre": "Le Garçon et son yéti",
+    "role": [
+      "Tank",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Nunu.png",
+    "attaque": 4,
+    "defense": 6,
+    "magie": 7,
+    "difficulte": 4
+  },
+  {
+    "nom": "Olaf",
+    "titre": "Berzerker",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Olaf.png",
+    "attaque": 9,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 3
+  },
+  {
+    "nom": "Orianna",
+    "titre": "Demoiselle mécanique",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Orianna.png",
+    "attaque": 4,
+    "defense": 3,
+    "magie": 9,
+    "difficulte": 7
+  },
+  {
+    "nom": "Ornn",
+    "titre": "Dieu de la forge volcanique",
+    "role": [
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Ornn.png",
+    "attaque": 5,
+    "defense": 9,
+    "magie": 3,
+    "difficulte": 5
+  },
+  {
+    "nom": "Pantheon",
+    "titre": "Lance éternelle",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Pantheon.png",
+    "attaque": 9,
+    "defense": 4,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Poppy",
+    "titre": "Gardienne du marteau",
+    "role": [
+      "Tank",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Poppy.png",
+    "attaque": 6,
+    "defense": 7,
+    "magie": 2,
+    "difficulte": 6
+  },
+  {
+    "nom": "Pyke",
+    "titre": "Éventreur des abysses",
+    "role": [
+      "Support",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Pyke.png",
+    "attaque": 9,
+    "defense": 3,
+    "magie": 1,
+    "difficulte": 7
+  },
+  {
+    "nom": "Qiyana",
+    "titre": "Impératrice des éléments",
+    "role": [
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Qiyana.png",
+    "attaque": 0,
+    "defense": 2,
+    "magie": 4,
+    "difficulte": 8
+  },
+  {
+    "nom": "Quinn",
+    "titre": "Ailes de Demacia",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Quinn.png",
+    "attaque": 9,
+    "defense": 4,
+    "magie": 2,
+    "difficulte": 5
+  },
+  {
+    "nom": "Rakan",
+    "titre": "Charmeur",
+    "role": [
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Rakan.png",
+    "attaque": 2,
+    "defense": 4,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Rammus",
+    "titre": "Tatou blindé",
+    "role": [
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Rammus.png",
+    "attaque": 4,
+    "defense": 10,
+    "magie": 5,
+    "difficulte": 5
+  },
+  {
+    "nom": "Rek'Sai",
+    "titre": "Traqueuse du Néant",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\RekSai.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 2,
+    "difficulte": 3
+  },
+  {
+    "nom": "Rell",
+    "titre": "Vierge de fer",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Rell.png",
+    "attaque": 0,
+    "defense": 0,
+    "magie": 0,
+    "difficulte": 0
+  },
+  {
+    "nom": "Renata Glasc",
+    "titre": "Baronne de la chimie",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Renata.png",
+    "attaque": 2,
+    "defense": 6,
+    "magie": 9,
+    "difficulte": 8
+  },
+  {
+    "nom": "Renekton",
+    "titre": "Dévoreur des sables",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Renekton.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 2,
+    "difficulte": 3
+  },
+  {
+    "nom": "Rengar",
+    "titre": "Fier traqueur",
+    "role": [
+      "Assassin",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Rengar.png",
+    "attaque": 7,
+    "defense": 4,
+    "magie": 2,
+    "difficulte": 8
+  },
+  {
+    "nom": "Riven",
+    "titre": "Exilée brisée",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Riven.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 1,
+    "difficulte": 8
+  },
+  {
+    "nom": "Rumble",
+    "titre": "Menace mécanisée",
+    "role": [
+      "Fighter",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Rumble.png",
+    "attaque": 3,
+    "defense": 6,
+    "magie": 8,
+    "difficulte": 10
+  },
+  {
+    "nom": "Ryze",
+    "titre": "Mage runique",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Ryze.png",
+    "attaque": 2,
+    "defense": 2,
+    "magie": 10,
+    "difficulte": 7
+  },
+  {
+    "nom": "Samira",
+    "titre": "Rose du désert",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Samira.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Sejuani",
+    "titre": "Fureur du nord",
+    "role": [
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Sejuani.png",
+    "attaque": 5,
+    "defense": 7,
+    "magie": 6,
+    "difficulte": 4
+  },
+  {
+    "nom": "Senna",
+    "titre": "Rédemptrice",
+    "role": [
+      "Support",
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Senna.png",
+    "attaque": 7,
+    "defense": 2,
+    "magie": 6,
+    "difficulte": 7
+  },
+  {
+    "nom": "Séraphine",
+    "titre": "Chanteuse rêveuse",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Seraphine.png",
+    "attaque": 0,
+    "defense": 0,
+    "magie": 0,
+    "difficulte": 0
+  },
+  {
+    "nom": "Sett",
+    "titre": "Patron",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Sett.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 1,
+    "difficulte": 2
+  },
+  {
+    "nom": "Shaco",
+    "titre": "Bouffon des ténèbres",
+    "role": [
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Shaco.png",
+    "attaque": 8,
+    "defense": 4,
+    "magie": 6,
+    "difficulte": 9
+  },
+  {
+    "nom": "Shen",
+    "titre": "Œil du crépuscule",
+    "role": [
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Shen.png",
+    "attaque": 3,
+    "defense": 9,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Shyvana",
+    "titre": "Demi-dragon",
+    "role": [
+      "Fighter",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Shyvana.png",
+    "attaque": 8,
+    "defense": 6,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Singed",
+    "titre": "Chimiste fou",
+    "role": [
+      "Tank",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Singed.png",
+    "attaque": 4,
+    "defense": 8,
+    "magie": 7,
+    "difficulte": 5
+  },
+  {
+    "nom": "Sion",
+    "titre": "Colosse mort-vivant",
+    "role": [
+      "Tank",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Sion.png",
+    "attaque": 5,
+    "defense": 9,
+    "magie": 3,
+    "difficulte": 5
+  },
+  {
+    "nom": "Sivir",
+    "titre": "Vierge martiale",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Sivir.png",
+    "attaque": 9,
+    "defense": 3,
+    "magie": 1,
+    "difficulte": 4
+  },
+  {
+    "nom": "Skarner",
+    "titre": "Souverain originel",
+    "role": [
+      "Tank",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Skarner.png",
+    "attaque": 7,
+    "defense": 8,
+    "magie": 5,
+    "difficulte": 5
+  },
+  {
+    "nom": "Smolder",
+    "titre": "Dragonnet flamboyant",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Smolder.png",
+    "attaque": 8,
+    "defense": 2,
+    "magie": 5,
+    "difficulte": 6
+  },
+  {
+    "nom": "Sona",
+    "titre": "Virtuose de la harpe",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Sona.png",
+    "attaque": 5,
+    "defense": 2,
+    "magie": 8,
+    "difficulte": 4
+  },
+  {
+    "nom": "Soraka",
+    "titre": "Enfant des étoiles",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Soraka.png",
+    "attaque": 2,
+    "defense": 5,
+    "magie": 7,
+    "difficulte": 3
+  },
+  {
+    "nom": "Swain",
+    "titre": "Grand général noxien",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Swain.png",
+    "attaque": 2,
+    "defense": 6,
+    "magie": 9,
+    "difficulte": 8
+  },
+  {
+    "nom": "Sylas",
+    "titre": "Révolutionnaire déchaîné",
+    "role": [
+      "Mage",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Sylas.png",
+    "attaque": 3,
+    "defense": 4,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Syndra",
+    "titre": "Souveraine obscure",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Syndra.png",
+    "attaque": 2,
+    "defense": 3,
+    "magie": 9,
+    "difficulte": 8
+  },
+  {
+    "nom": "Tahm Kench",
+    "titre": "Roi des rivières",
+    "role": [
+      "Tank",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\TahmKench.png",
+    "attaque": 3,
+    "defense": 9,
+    "magie": 6,
+    "difficulte": 5
+  },
+  {
+    "nom": "Taliyah",
+    "titre": "Tisseuse de pierres",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Taliyah.png",
+    "attaque": 1,
+    "defense": 7,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Talon",
+    "titre": "Lame des ténèbres",
+    "role": [
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Talon.png",
+    "attaque": 9,
+    "defense": 3,
+    "magie": 1,
+    "difficulte": 7
+  },
+  {
+    "nom": "Taric",
+    "titre": "Bouclier de Valoran",
+    "role": [
+      "Support",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Taric.png",
+    "attaque": 4,
+    "defense": 8,
+    "magie": 5,
+    "difficulte": 3
+  },
+  {
+    "nom": "Teemo",
+    "titre": "Éclaireur de Bandle",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Teemo.png",
+    "attaque": 5,
+    "defense": 3,
+    "magie": 7,
+    "difficulte": 6
+  },
+  {
+    "nom": "Thresh",
+    "titre": "Garde aux chaînes",
+    "role": [
+      "Support",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Thresh.png",
+    "attaque": 5,
+    "defense": 6,
+    "magie": 6,
+    "difficulte": 7
+  },
+  {
+    "nom": "Tristana",
+    "titre": "Canonnière yordle",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Tristana.png",
+    "attaque": 9,
+    "defense": 3,
+    "magie": 5,
+    "difficulte": 4
+  },
+  {
+    "nom": "Trundle",
+    "titre": "Roi des trolls",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Trundle.png",
+    "attaque": 7,
+    "defense": 6,
+    "magie": 2,
+    "difficulte": 5
+  },
+  {
+    "nom": "Tryndamere",
+    "titre": "Roi barbare",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Tryndamere.png",
+    "attaque": 10,
+    "defense": 5,
+    "magie": 2,
+    "difficulte": 5
+  },
+  {
+    "nom": "Twisted Fate",
+    "titre": "Maître des cartes",
+    "role": [
+      "Mage",
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\TwistedFate.png",
+    "attaque": 6,
+    "defense": 2,
+    "magie": 6,
+    "difficulte": 9
+  },
+  {
+    "nom": "Twitch",
+    "titre": "Semeur de peste",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Twitch.png",
+    "attaque": 9,
+    "defense": 2,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Udyr",
+    "titre": "Gardien des esprits",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Udyr.png",
+    "attaque": 8,
+    "defense": 7,
+    "magie": 4,
+    "difficulte": 7
+  },
+  {
+    "nom": "Urgot",
+    "titre": "Broyeur",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Urgot.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 8
+  },
+  {
+    "nom": "Varus",
+    "titre": "Flèche de la vengeance",
+    "role": [
+      "Marksman",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Varus.png",
+    "attaque": 7,
+    "defense": 3,
+    "magie": 4,
+    "difficulte": 2
+  },
+  {
+    "nom": "Vayne",
+    "titre": "Chasseresse nocturne",
+    "role": [
+      "Marksman",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Vayne.png",
+    "attaque": 10,
+    "defense": 1,
+    "magie": 1,
+    "difficulte": 8
+  },
+  {
+    "nom": "Veigar",
+    "titre": "Seigneur des maléfices",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Veigar.png",
+    "attaque": 2,
+    "defense": 2,
+    "magie": 10,
+    "difficulte": 7
+  },
+  {
+    "nom": "Vel'Koz",
+    "titre": "Œil du Néant",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Velkoz.png",
+    "attaque": 2,
+    "defense": 2,
+    "magie": 10,
+    "difficulte": 8
+  },
+  {
+    "nom": "Vex",
+    "titre": "Ombre du désespoir",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Vex.png",
+    "attaque": 0,
+    "defense": 0,
+    "magie": 0,
+    "difficulte": 0
+  },
+  {
+    "nom": "Vi",
+    "titre": "Cogne de Piltover",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Vi.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 4
+  },
+  {
+    "nom": "Viego",
+    "titre": "Roi déchu",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Viego.png",
+    "attaque": 6,
+    "defense": 4,
+    "magie": 2,
+    "difficulte": 5
+  },
+  {
+    "nom": "Viktor",
+    "titre": "Héraut des machines",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Viktor.png",
+    "attaque": 2,
+    "defense": 4,
+    "magie": 10,
+    "difficulte": 9
+  },
+  {
+    "nom": "Vladimir",
+    "titre": "Saigneur pourpre",
+    "role": [
+      "Mage",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Vladimir.png",
+    "attaque": 2,
+    "defense": 6,
+    "magie": 8,
+    "difficulte": 7
+  },
+  {
+    "nom": "Volibear",
+    "titre": "Tempête impitoyable",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Volibear.png",
+    "attaque": 7,
+    "defense": 7,
+    "magie": 4,
+    "difficulte": 3
+  },
+  {
+    "nom": "Warwick",
+    "titre": "Fureur déchaînée de Zaun",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Warwick.png",
+    "attaque": 9,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 3
+  },
+  {
+    "nom": "Xayah",
+    "titre": "Rebelle",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Xayah.png",
+    "attaque": 10,
+    "defense": 6,
+    "magie": 1,
+    "difficulte": 5
+  },
+  {
+    "nom": "Xerath",
+    "titre": "Mage suprême",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Xerath.png",
+    "attaque": 1,
+    "defense": 3,
+    "magie": 10,
+    "difficulte": 8
+  },
+  {
+    "nom": "Xin Zhao",
+    "titre": "Sénéchal de Demacia",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\XinZhao.png",
+    "attaque": 8,
+    "defense": 6,
+    "magie": 3,
+    "difficulte": 2
+  },
+  {
+    "nom": "Yasuo",
+    "titre": "Disgracié",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Yasuo.png",
+    "attaque": 8,
+    "defense": 4,
+    "magie": 4,
+    "difficulte": 10
+  },
+  {
+    "nom": "Yone",
+    "titre": "Inoublié",
+    "role": [
+      "Fighter",
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Yone.png",
+    "attaque": 8,
+    "defense": 4,
+    "magie": 4,
+    "difficulte": 8
+  },
+  {
+    "nom": "Yorick",
+    "titre": "Berger des âmes",
+    "role": [
+      "Fighter",
+      "Tank"
+    ],
+    "image": "dev\\images_champions\\Yorick.png",
+    "attaque": 6,
+    "defense": 6,
+    "magie": 4,
+    "difficulte": 6
+  },
+  {
+    "nom": "Yuumi",
+    "titre": "Gardienne du Grimoire",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Yuumi.png",
+    "attaque": 5,
+    "defense": 1,
+    "magie": 8,
+    "difficulte": 2
+  },
+  {
+    "nom": "Zac",
+    "titre": "Arme secrète",
+    "role": [
+      "Tank",
+      "Fighter"
+    ],
+    "image": "dev\\images_champions\\Zac.png",
+    "attaque": 3,
+    "defense": 7,
+    "magie": 7,
+    "difficulte": 8
+  },
+  {
+    "nom": "Zed",
+    "titre": "Maître des ombres",
+    "role": [
+      "Assassin"
+    ],
+    "image": "dev\\images_champions\\Zed.png",
+    "attaque": 9,
+    "defense": 2,
+    "magie": 1,
+    "difficulte": 7
+  },
+  {
+    "nom": "Zeri",
+    "titre": "Étincelle de Zaun",
+    "role": [
+      "Marksman"
+    ],
+    "image": "dev\\images_champions\\Zeri.png",
+    "attaque": 8,
+    "defense": 5,
+    "magie": 3,
+    "difficulte": 6
+  },
+  {
+    "nom": "Ziggs",
+    "titre": "Expert des Hexplosifs",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Ziggs.png",
+    "attaque": 2,
+    "defense": 4,
+    "magie": 9,
+    "difficulte": 4
+  },
+  {
+    "nom": "Zilean",
+    "titre": "Gardien du Temps",
+    "role": [
+      "Support",
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Zilean.png",
+    "attaque": 2,
+    "defense": 5,
+    "magie": 8,
+    "difficulte": 6
+  },
+  {
+    "nom": "Zoé",
+    "titre": "Manifestation du Crépuscule",
+    "role": [
+      "Mage"
+    ],
+    "image": "dev\\images_champions\\Zoe.png",
+    "attaque": 1,
+    "defense": 7,
+    "magie": 8,
+    "difficulte": 5
+  },
+  {
+    "nom": "Zyra",
+    "titre": "Dame aux ronces",
+    "role": [
+      "Mage",
+      "Support"
+    ],
+    "image": "dev\\images_champions\\Zyra.png",
+    "attaque": 4,
+    "defense": 3,
+    "magie": 8,
+    "difficulte": 7
+  }
+]

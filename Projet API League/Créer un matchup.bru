@@ -1,0 +1,28 @@
+meta {
+  name: Créer un matchup
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:3000/matchups
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "championPrincipal": "Zed",
+    "championAdverse": "Ahri",
+    "nbParties": 3,
+    "nbVictoires": 2,
+    "nbDefaites": 1,
+    "avantageNiveau": 6,
+    "favorable": true,
+    "notesPerso": ["Jouer safe avant niveau 6"]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

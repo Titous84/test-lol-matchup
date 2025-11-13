@@ -1,0 +1,19 @@
+meta {
+  name: Filtrer par rôle
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3000/champions?role=Mage
+  body: none
+  auth: inherit
+}
+
+params:query {
+  role: Mage
+}
+
+settings {
+  encodeUrl: true
+}

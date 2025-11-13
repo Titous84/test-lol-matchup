@@ -1,0 +1,15 @@
+meta {
+  name: Lister tous les matchups
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:3000/matchups
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
