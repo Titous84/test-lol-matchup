@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import path from 'path';
 import { env } from './config/env';
 import createAuthRouter from './routes/auth';
 import createChampionsRouter from './routes/champions';
@@ -11,6 +12,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(
+  '/images/champions',
+  express.static(path.resolve(__dirname, '..', 'dev', 'images_champions')),
+);
 
 app.get('/', (_req, res) => {
   res.json({

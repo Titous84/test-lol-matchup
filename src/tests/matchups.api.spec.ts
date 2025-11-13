@@ -1,5 +1,6 @@
 const express = require('express');
 const request = require('supertest');
+const { Types } = require('mongoose');
 const { createMatchupsRouter } = require('../routes/matchups');
 
 const creerModeleMatchupMemoire = () => {
@@ -21,12 +22,12 @@ const creerModeleMatchupMemoire = () => {
       return donnees.filter((doc) => {
         if (
           filtre.championPrincipal &&
-          doc.championPrincipal !== filtre.championPrincipal
+          String(doc.championPrincipal) !== String(filtre.championPrincipal)
         )
           return false;
         if (
           filtre.championAdverse &&
-          doc.championAdverse !== filtre.championAdverse
+          String(doc.championAdverse) !== String(filtre.championAdverse)
         )
           return false;
         if (filtre.voie && doc.voie !== filtre.voie) return false;
@@ -56,17 +57,41 @@ const creerModeleMatchupMemoire = () => {
   };
 };
 
+const creerModeleChampionMemoire = () => {
+  const champions = [
+    { _id: new Types.ObjectId(), nom: 'Ahri' },
+    { _id: new Types.ObjectId(), nom: 'Zed' },
+  ];
+  return {
+    async find(filtre: Record<string, any> = {}) {
+      if (filtre._id?.$in) {
+        const ids = filtre._id.$in.map((id: any) => id.toString());
+        return champions.filter((champion) => ids.includes(champion._id.toString()));
+      }
+      return champions;
+    },
+    async findOne(filtre: Record<string, any> = {}) {
+      if (!filtre.nom) return null;
+      const regex = filtre.nom.$regex
+        ? new RegExp(filtre.nom.$regex, filtre.nom.$options)
+        : new RegExp(filtre.nom, 'i');
+      return champions.find((champion) => regex.test(champion.nom)) ?? null;
+    },
+  };
+};
+
 const modele = creerModeleMatchupMemoire();
+const modeleChampion = creerModeleChampionMemoire();
 const app = express();
 app.use(express.json());
-app.use('/matchups', createMatchupsRouter(modele as any));
+app.use('/matchups', createMatchupsRouter(modele as any, modeleChampion as any));
 
 describe('API Matchups', () => {
   beforeEach(() => modele.reset());
 
   const basePayload = {
-    championPrincipal: '1',
-    championAdverse: '2',
+    championPrincipal: 'Ahri',
+    championAdverse: 'Zed',
     voie: 'Mid',
     nbParties: 10,
     nbVictoires: 6,
@@ -83,7 +108,7 @@ describe('API Matchups', () => {
   it('POST /matchups → crée un matchup', async () => {
     const res = await request(app).post('/matchups').send(basePayload);
     expect(res.status).toBe(201);
-    expect(res.body.championPrincipal).toBe('1');
+    expect(res.body.championPrincipal).toBe('Ahri');
   });
 
   it('GET /matchups → retourne la liste', async () => {
@@ -98,6 +123,14 @@ describe('API Matchups', () => {
     const res = await request(app).get('/matchups?voie=Mid');
     expect(res.status).toBe(200);
     expect(res.body[0].voie).toBe('Mid');
+  });
+
+  it('GET /matchups?championPrincipal=Ahri → filtre par nom', async () => {
+    await request(app).post('/matchups').send(basePayload);
+    const res = await request(app).get('/matchups?championPrincipal=Ahri');
+    expect(res.status).toBe(200);
+    expect(res.body.length).toBe(1);
+    expect(res.body[0].championPrincipal).toBe('Ahri');
   });
 
   it('PUT /matchups/:id → met à jour le matchup', async () => {

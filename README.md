@@ -30,6 +30,39 @@ examen-api-league-matchups/
 
 ---
 
+## ⚙️ Préparation locale pas-à-pas
+
+1. **Variables d’environnement**
+   ```bash
+   cp .env.example .env
+   # adapter MONGODB_URI si nécessaire
+   ```
+2. **Installer les dépendances backend**
+   ```bash
+   npm install
+   ```
+3. **Déposer les fichiers Kaggle**
+   - Placer les 7 fichiers CSV/JSON fournis par l’enseignant dans `dev/data/` (n’importe quels noms de fichiers).
+   - Chaque fichier doit contenir les colonnes standard (`MainChampion`, `OpponentChampion`, `Lane`, `WinRate`, `Wins`, `Losses`, `Games`, `KDA`, `AdvantageLevel`, `Difficulty`, `Favorable`, `Tips`, `Tags`). Le script accepte aussi leurs équivalents FR/EN.
+4. **Importer les données dans MongoDB**
+   ```bash
+   npm run seed:dev            # importe champions + matchups en analysant dev/data/
+   ```
+5. **Démarrer l’API Express**
+   ```bash
+   npm run dev                 # http://localhost:4000
+   ```
+6. **Démarrer le frontend**
+   ```bash
+   cd lol-matchups
+   npm install
+   npm start                   # React sur http://localhost:3000
+   ```
+
+> Les images statiques des champions sont exposées via `http://localhost:4000/images/champions/<Nom>.png`.
+
+---
+
 ## 🗄️ Modèles MongoDB & validations
 
 | Modèle       | Champs clés (extraits)                                                                                                                                                                | Validations                                                                                                                                         |
@@ -41,7 +74,7 @@ examen-api-league-matchups/
 
 Les erreurs sont renvoyées en français avec le détail Mongoose.
 
----
+### Champions
 
 ## 🚀 API Express (http://localhost:4000)
 
@@ -91,13 +124,20 @@ JWT maison : signature HMAC-SHA256 via `crypto`. Expiration 8 h.
 
 ## 🔄 Scripts & données Kaggle
 
-`npm run ts-node scripts/importKaggle.ts champions.csv matchups.csv`
+### Import automatique prêt à l’emploi
 
-1. Lit deux CSV (séparateur `,`).
-2. Convertit dynamiquement les colonnes Kaggle (`Name`, `Lane`, `WinRate`, etc.).
-3. Vide puis remplit les collections `champions` et `matchups`.
+```bash
+npm run seed:dev                         # lit dev/data/ + dev/champions.json
+npm run seed:dev ./autre/dossier         # chemin personnalisé pour les CSV/JSON
+```
 
-> Adapter les en-têtes en modifiant les alias (`row.Name`, `row.MainChampion`, …).
+1. Lit `dev/champions.json` pour reconstruire la collection `champions` (168 entrées, liens d’icônes `/images/champions/...`).
+2. Parcourt **tous** les fichiers `.csv`/`.json` présents dans `dev/data/`, peu importe leur nom.
+3. Reconnaît automatiquement les colonnes principales (noms FR/EN, winrate en pourcentage ou ratio, lanes, tips, tags, etc.).
+4. Fusionne les fichiers, convertit les noms de champions en ObjectId (via `Champion.nom`) puis alimente `matchups`.
+5. Affiche un récapitulatif (`matchups` importés / ignorés si un champion est absent du catalogue).
+
+> L’ancien script `scripts/importKaggle.ts` reste disponible si vous souhaitez fournir manuellement deux CSV spécifiques.
 
 ---
 
