@@ -1,65 +1,117 @@
-// Tests pour l'API Matchups
-
-const request = require('supertest');
 const express = require('express');
-const mongoose = require('mongoose');
+const request = require('supertest');
+const { createMatchupsRouter } = require('../routes/matchups');
 
-const matchupsRouter = require('../routes/matchups');
-const { Matchup } = require('../modèles/Matchup');
+const creerModeleMatchupMemoire = () => {
+  const donnees: any[] = [];
 
+  return {
+    reset() {
+      donnees.length = 0;
+    },
+    async create(payload: any) {
+      const doc = {
+        _id: String(Date.now() + Math.random()),
+        ...payload,
+      };
+      donnees.push(doc);
+      return doc;
+    },
+    async find(filtre: Record<string, any> = {}) {
+      return donnees.filter((doc) => {
+        if (
+          filtre.championPrincipal &&
+          doc.championPrincipal !== filtre.championPrincipal
+        )
+          return false;
+        if (
+          filtre.championAdverse &&
+          doc.championAdverse !== filtre.championAdverse
+        )
+          return false;
+        if (filtre.voie && doc.voie !== filtre.voie) return false;
+        if (
+          typeof filtre.favorable === 'boolean' &&
+          doc.favorable !== filtre.favorable
+        )
+          return false;
+        return true;
+      });
+    },
+    async findById(id: string) {
+      return donnees.find((doc) => doc._id === id) ?? null;
+    },
+    async findByIdAndUpdate(id: string, updates: any) {
+      const index = donnees.findIndex((doc) => doc._id === id);
+      if (index === -1) return null;
+      donnees[index] = { ...donnees[index], ...updates };
+      return donnees[index];
+    },
+    async findByIdAndDelete(id: string) {
+      const index = donnees.findIndex((doc) => doc._id === id);
+      if (index === -1) return null;
+      const [supprime] = donnees.splice(index, 1);
+      return supprime;
+    },
+  };
+};
+
+const modele = creerModeleMatchupMemoire();
 const app = express();
 app.use(express.json());
-app.use('/matchups', matchupsRouter);
+app.use('/matchups', createMatchupsRouter(modele as any));
 
 describe('API Matchups', () => {
-  beforeAll(async () => {
-    await mongoose.connect('mongodb://127.0.0.1:27017/league');
-    await Matchup.deleteMany({});
-  });
+  beforeEach(() => modele.reset());
 
-  afterAll(async () => {
-    await mongoose.disconnect();
-  });
+  const basePayload = {
+    championPrincipal: '1',
+    championAdverse: '2',
+    voie: 'Mid',
+    nbParties: 10,
+    nbVictoires: 6,
+    nbDefaites: 4,
+    tauxVictoire: 60,
+    kdaMoyen: 3.4,
+    niveauAvantage: 7,
+    difficulte: 'Équilibré',
+    favorable: true,
+    conseils: ['Utiliser la mobilité'],
+    tags: ['poke'],
+  };
 
-  let matchupId: string;
-
-  it('POST /matchups → doit créer un matchup', async () => {
-    const res = await request(app)
-      .post('/matchups')
-      .send({
-        championPrincipal: 'Ahri',
-        championAdverse: 'Zed',
-        nbParties: 3,
-        nbVictoires: 2,
-        nbDefaites: 1,
-        avantageNiveau: 6,
-        favorable: true,
-        notesPerso: ['Jouer safe avant niveau 6'],
-      });
+  it('POST /matchups → crée un matchup', async () => {
+    const res = await request(app).post('/matchups').send(basePayload);
     expect(res.status).toBe(201);
-    expect(res.body.championPrincipal).toBe('Ahri');
-    matchupId = res.body._id;
+    expect(res.body.championPrincipal).toBe('1');
   });
 
-  it('GET /matchups → doit retourner un tableau avec le matchup créé', async () => {
+  it('GET /matchups → retourne la liste', async () => {
+    await request(app).post('/matchups').send(basePayload);
     const res = await request(app).get('/matchups');
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(1);
   });
 
-  it('PUT /matchups/:id → doit mettre à jour le matchup', async () => {
-    const res = await request(app).put(`/matchups/${matchupId}`).send({
-      nbParties: 3,
-      nbVictoires: 3,
-      nbDefaites: 0,
-      favorable: true,
-    });
+  it('GET /matchups?voie=Mid → applique le filtre', async () => {
+    await request(app).post('/matchups').send(basePayload);
+    const res = await request(app).get('/matchups?voie=Mid');
     expect(res.status).toBe(200);
-    expect(res.body.nbVictoires).toBe(3);
+    expect(res.body[0].voie).toBe('Mid');
   });
 
-  it('DELETE /matchups/:id → doit supprimer le matchup', async () => {
-    const res = await request(app).delete(`/matchups/${matchupId}`);
+  it('PUT /matchups/:id → met à jour le matchup', async () => {
+    const creation = await request(app).post('/matchups').send(basePayload);
+    const res = await request(app)
+      .put(`/matchups/${creation.body._id}`)
+      .send({ nbParties: 12 });
+    expect(res.status).toBe(200);
+    expect(res.body.nbParties).toBe(12);
+  });
+
+  it('DELETE /matchups/:id → supprime le matchup', async () => {
+    const creation = await request(app).post('/matchups').send(basePayload);
+    const res = await request(app).delete(`/matchups/${creation.body._id}`);
     expect(res.status).toBe(200);
     expect(res.body.message).toContain('supprimé');
   });

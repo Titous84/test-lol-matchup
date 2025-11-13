@@ -2,10 +2,15 @@ export interface Champion {
   _id: string;
   nom: string;
   titre: string;
-  role: string[];
-  image: string;
+  roles: string[];
+  region: string;
+  difficulte: number;
   attaque: number;
   defense: number;
   magie: number;
-  difficulte: number;
+  mobilite: number;
+  portee: string;
+  icone: string;
+  enRotation: boolean;
+  tags: string[];
 }
